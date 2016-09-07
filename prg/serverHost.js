@@ -35,7 +35,9 @@ function ServerHost(){ return{
   appendModule : function(name){
     var module = require(name);
     if(module){
-      if(!module.type){
+      if(module.enable === false){
+        console.log("appendModule: " + name + " - disabled by configration.");
+      }else if(!module.type){
         console.log("appendModule: " + name + " - 'type' not defined.");
       }else if(!module.createInput){
         console.log("appendModule: " + name + " - 'createInput' not defined.");

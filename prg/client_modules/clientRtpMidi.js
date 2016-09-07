@@ -2,13 +2,14 @@
 // RTP MIDIクライアント
 //==============================================================================
 var client_io = require('./client_io');
-var rtpmidi   = require('rtpmidi');
+//var rtpmidi   = require('rtpmidi');
 var midiconv  = require('./midiconverter');
 
 var host;
 var type = "rtp";
 
 module.exports = {
+  enable: false,
   type: type,
   createInput: function(name){
     console.log("RtpMidi Input [" + name + "]");
@@ -35,11 +36,11 @@ module.exports = {
 }
 
 // RtpMidi
-var g_rtpSession = rtpmidi.manager.createSession({
-  localName: 'Session 1',
-  bonjourName: 'CreatorsHub',
-  port: 5008
-});
+// var g_rtpSession = rtpmidi.manager.createSession({
+//   localName: 'Session 1',
+//   bonjourName: 'CreatorsHub',
+//   port: 5008
+// });
 
 function createMidiInput(name){
   var input = client_io(type, name);
